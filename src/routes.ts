@@ -4,9 +4,6 @@ import accountService from './accountService';
 
 const router = express.Router();
 
-router.get('/', (req: Request, res: Response) => {
-  res.send("你成功到手頁");
-});
 
 router.get('/accounts', (req: Request, res: Response) => {
   const accounts = accountService.getAllAccounts();

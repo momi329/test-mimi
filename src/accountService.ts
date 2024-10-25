@@ -7,24 +7,23 @@ class AccountService {
   
   initializeDummyData(): void {
     const dummyAccounts = [
-      { name: "Alice Johnson", balance: 5000 },
-      { name: "Bob Smith", balance: 3500 },
-      { name: "Charlie Brown", balance: 2000 },
-      { name: "Diana Prince", balance: 10000 },
-      { name: "Ethan Hunt", balance: 7500 }
+      { name: "Tracy", balance: 5000 },
+      { name: "Lindy", balance: 3500 },
+      { name: "Catharine", balance: 2000 },
+      { name: "Victoria", balance: 10000 },
+      { name: "Joann", balance: 7500 }
     ];
 
     dummyAccounts.forEach(account => {
       this.createAccount(account.name, account.balance);
     });
 
-    console.log("Dummy accounts initialized:");
-    console.log(this.getAllAccounts());
+    console.log("accounts init:",this.getAllAccounts());
   }
 
   createAccount(name: string, initialBalance: number): Account {
     if (initialBalance < 0) {
-      throw new Error('Initial balance cannot be negative');
+      throw new Error('❎不可以是負數❎');
     }
     const id = uuidv4();
     const account: Account = { id, name, balance: initialBalance };
@@ -35,7 +34,7 @@ class AccountService {
   getAccount(id: string): Account {
     const account = this.accounts.get(id);
     if (!account) {
-      throw new Error('Account not found');
+      throw new Error('❎找不到帳號❎');
     }
     return account;
   }
@@ -60,7 +59,7 @@ class AccountService {
     const toAccount = this.getAccount(toId);
     
     if (fromAccount.balance < amount) {
-      throw new Error('Insufficient funds');
+      throw new Error('🤑餘額不足🤑');
     }
 
     fromAccount.balance -= amount;
